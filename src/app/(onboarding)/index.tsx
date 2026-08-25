@@ -317,6 +317,12 @@ export default function OnboardingScreen() {
         </Card>
       </Reveal>
       <View style={styles.actions}>
+        <Button
+          label={draft.step === 8 ? "Start exploring" : "Continue"}
+          icon={draft.step === 8 ? "play" : "arrow"}
+          onPress={() => void next()}
+          loading={saving}
+        />
         {draft.step > 0 ? (
           <Button
             label="Back"
@@ -324,12 +330,6 @@ export default function OnboardingScreen() {
             onPress={() => update({ step: draft.step - 1 })}
           />
         ) : null}
-        <Button
-          label={draft.step === 8 ? "Start exploring" : "Continue"}
-          icon={draft.step === 8 ? "play" : "arrow"}
-          onPress={() => void next()}
-          loading={saving}
-        />
       </View>
     </Screen>
   );

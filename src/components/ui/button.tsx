@@ -84,6 +84,12 @@ export function Button({
         <ActivityIndicator color={isPrimary ? colors.white : palette.primary} />
       ) : (
         <View style={styles.content}>
+          <AppText
+            variant="bodyStrong"
+            tone={isPrimary ? "inverse" : "default"}
+          >
+            {label}
+          </AppText>
           {icon ? (
             <AppIcon
               name={icon}
@@ -91,12 +97,6 @@ export function Button({
               color={isPrimary ? colors.white : palette.primary}
             />
           ) : null}
-          <AppText
-            variant="bodyStrong"
-            tone={isPrimary ? "inverse" : "default"}
-          >
-            {label}
-          </AppText>
         </View>
       )}
     </ScalePressable>
