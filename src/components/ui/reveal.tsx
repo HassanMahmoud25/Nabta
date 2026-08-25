@@ -1,0 +1,2 @@
+import { type PropsWithChildren } from 'react'; import { type ViewStyle } from 'react-native'; import Animated, { FadeInDown, ReduceMotion } from 'react-native-reanimated'; import { motion } from '@/theme/motion';
+export function Reveal({ children, delay = 0, style }: PropsWithChildren<{ delay?: number; style?: ViewStyle }>) { return <Animated.View entering={FadeInDown.duration(motion.duration.reveal).delay(delay).reduceMotion(ReduceMotion.System)} style={style}>{children}</Animated.View>; }

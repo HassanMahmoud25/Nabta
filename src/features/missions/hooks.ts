@@ -1,0 +1,5 @@
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'; import { queryKeys } from '@/services/api/query-keys'; import type { CompleteMissionInput } from '@/services/api/contracts'; import { missionsService } from './missions-service';
+export function useTodayMission(childId: string | null) { return useQuery({ queryKey: childId ? queryKeys.todayMission(childId) : ['missions', 'today', 'disabled'], queryFn: () => missionsService.today(childId!), enabled: Boolean(childId) }); }
+export function useMission(missionId: string) { return useQuery({ queryKey: ['missions', missionId], queryFn: () => missionsService.get(missionId) }); }
+export function useCompleteMission() { const client = useQueryClient(); return useMutation({ mutationFn: (input: CompleteMissionInput) => missionsService.complete(input), onSuccess: (_data, input) => Promise.all([queryKeys.progress(input.childId), queryKeys.todayMission(input.childId), queryKeys.dashboard(input.childId), queryKeys.rewards(input.childId), queryKeys.missionHistory(input.childId), queryKeys.child(input.childId)].map((queryKey) => client.invalidateQueries({ queryKey }))) }); }
+

@@ -1,0 +1,7 @@
+import { useEffect } from 'react';
+import { StyleSheet, View } from 'react-native';
+import Animated, { ReduceMotion, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated';
+import { colors, radius } from '@/theme/tokens';
+import { motion } from '@/theme/motion';
+export function ProgressBar({ value, label, color = colors.kids.primary, trackColor = '#DDD9E7', size = 'regular' }: { value: number; label: string; color?: string; trackColor?: string; size?: 'compact' | 'regular' | 'large' }) { const safe = Math.min(100, Math.max(0, value)); const progress = useSharedValue(0); useEffect(() => { progress.value = withTiming(safe, { duration: motion.duration.standard, easing: motion.easing.emphasized, reduceMotion: ReduceMotion.System }); }, [progress, safe]); const animatedStyle = useAnimatedStyle(() => ({ width: `${progress.value}%` })); return <View accessibilityRole="progressbar" accessibilityLabel={label} accessibilityValue={{ min: 0, max: 100, now: safe }} style={[styles.track, styles[size], { backgroundColor: trackColor }]}><Animated.View style={[styles.fill, { backgroundColor: color }, animatedStyle]} /></View>; }
+const styles = StyleSheet.create({ track: { borderRadius: radius.pill, backgroundColor: '#DDD9E7', overflow: 'hidden' }, compact: { height: 6 }, regular: { height: 10 }, large: { height: 14 }, fill: { height: '100%', borderRadius: radius.pill } });

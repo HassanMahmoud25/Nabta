@@ -1,0 +1,2 @@
+import { badges } from '@/data/badges'; import { devDatabase } from '@/services/api/dev-database'; import { prodDatabase } from '@/services/api/prod-database'; import { env } from '@/config/env';
+export const rewardsService = { async get(childId: string) { const unlockedIds = await (env.useDevFixtures || !env.hasSupabaseConfig ? devDatabase.getBadges(childId) : prodDatabase.getBadges(childId)); return { definitions: badges, unlockedIds }; } };
