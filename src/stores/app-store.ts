@@ -1,9 +1,13 @@
-import { create } from 'zustand';
-import { storage } from '@/services/storage/local-storage';
-import type { ExperienceMode } from '@/theme/tokens';
+import { storage } from "@/services/storage/local-storage";
+import type { ExperienceMode } from "@/theme/tokens";
+import { create } from "zustand";
 
-const activeChildKey = (parentId: string) => `nash2.active-child.${parentId}`;
-export function selectValidActiveChild(currentId: string | null, persistedId: string | null, childIds: string[]) {
+const activeChildKey = (parentId: string) => `nabta.active-child.${parentId}`;
+export function selectValidActiveChild(
+  currentId: string | null,
+  persistedId: string | null,
+  childIds: string[],
+) {
   if (currentId && childIds.includes(currentId)) return currentId;
   if (persistedId && childIds.includes(persistedId)) return persistedId;
   return childIds[0] ?? null;
@@ -22,21 +26,49 @@ type AppState = {
 };
 
 export const useAppStore = create<AppState>((set, get) => ({
-  activeChildId: null, activeParentId: null, switchingToChildId: null, mode: 'parent',
+  activeChildId: null,
+  activeParentId: null,
+  switchingToChildId: null,
+  mode: "parent",
   reconcileActiveChild: (parentId, childIds) => {
-    const current = get().activeParentId === parentId ? get().activeChildId : null;
-    const next = selectValidActiveChild(current, storage.get<string>(activeChildKey(parentId)), childIds);
-    if (next) storage.set(activeChildKey(parentId), next); else storage.remove(activeChildKey(parentId));
-    set({ activeParentId: parentId, activeChildId: next, switchingToChildId: null }); return next;
+    const current =
+      get().activeParentId === parentId ? get().activeChildId : null;
+    const next = selectValidActiveChild(
+      current,
+      storage.get<string>(activeChildKey(parentId)),
+      childIds,
+    );
+    if (next) storage.set(activeChildKey(parentId), next);
+    else storage.remove(activeChildKey(parentId));
+    set({
+      activeParentId: parentId,
+      activeChildId: next,
+      switchingToChildId: null,
+    });
+    return next;
   },
   setActiveChild: (activeChildId, parentId) => {
-    const ownerId = parentId ?? get().activeParentId; if (ownerId && activeChildId) storage.set(activeChildKey(ownerId), activeChildId); else if (ownerId) storage.remove(activeChildKey(ownerId));
-    set((state) => ({ activeChildId, activeParentId: ownerId ?? state.activeParentId, switchingToChildId: activeChildId !== state.activeChildId ? activeChildId : null }));
+    const ownerId = parentId ?? get().activeParentId;
+    if (ownerId && activeChildId)
+      storage.set(activeChildKey(ownerId), activeChildId);
+    else if (ownerId) storage.remove(activeChildKey(ownerId));
+    set((state) => ({
+      activeChildId,
+      activeParentId: ownerId ?? state.activeParentId,
+      switchingToChildId:
+        activeChildId !== state.activeChildId ? activeChildId : null,
+    }));
   },
   finishChildSwitch: () => set({ switchingToChildId: null }),
   enterKidsMode: (activeChildId, parentId) => {
-    const ownerId = parentId ?? get().activeParentId; if (ownerId) storage.set(activeChildKey(ownerId), activeChildId);
-    set({ activeChildId, activeParentId: ownerId, switchingToChildId: null, mode: 'kids' });
+    const ownerId = parentId ?? get().activeParentId;
+    if (ownerId) storage.set(activeChildKey(ownerId), activeChildId);
+    set({
+      activeChildId,
+      activeParentId: ownerId,
+      switchingToChildId: null,
+      mode: "kids",
+    });
   },
-  enterParentMode: () => set({ mode: 'parent' }),
+  enterParentMode: () => set({ mode: "parent" }),
 }));

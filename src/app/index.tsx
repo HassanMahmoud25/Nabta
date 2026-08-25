@@ -35,7 +35,7 @@ export default function HomeScreen() {
       goals: ["confidence"],
     });
     setActiveChild(child.id, parentId);
-    await signIn({ email: "demo@nash2.local", password: "development-only" });
+    await signIn({ email: "demo@nabta.local", password: "development-only" });
     await queryClient.invalidateQueries({
       queryKey: queryKeys.children(parentId),
     });
@@ -48,7 +48,7 @@ export default function HomeScreen() {
           <AppIcon name="journey" size={24} color={colors.white} />
         </View>
         <View>
-          <AppText variant="heading">Nash2</AppText>
+          <AppText variant="heading">Nabta</AppText>
           <AppText variant="micro" style={styles.brandSub}>
             LIFE SKILLS ADVENTURES
           </AppText>

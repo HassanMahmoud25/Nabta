@@ -1,8 +1,8 @@
-# Nash2 Architecture
+# Nabta Architecture
 
 ## Runtime and boundaries
 
-Nash2 targets Expo SDK 57, React Native 0.86, React 19.2, strict TypeScript, and Expo Router. Expo Router owns navigation; TanStack Query owns server-state caching; Zustand owns only mode, active-child, onboarding draft, and in-session mission state. Supabase is accessed through services, never directly by screens.
+Nabta targets Expo SDK 57, React Native 0.86, React 19.2, strict TypeScript, and Expo Router. Expo Router owns navigation; TanStack Query owns server-state caching; Zustand owns only mode, active-child, onboarding draft, and in-session mission state. Supabase is accessed through services, never directly by screens.
 
 ```text
 Expo Router screens

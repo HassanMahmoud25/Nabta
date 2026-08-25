@@ -1,24 +1,24 @@
-# Nash2 card redesign plan
+# Nabta card redesign plan
 
 ## Audit snapshot
 
 The app had a sound structural base, but most card-like surfaces were assembled from the same white/tinted rounded rectangle, `radius.lg`, border, and shadow recipe. This made semantically different moments read too similarly.
 
-| Area | Existing card-like UI | Main issue | Design-system direction |
-| --- | --- | --- | --- |
-| Kids Home | explorer level, today's mission, thought nudge | level and mission shared generic surface language | `progress` for level; illustrated `mission` hero; calm supporting nudge |
-| Journey | skill progress nodes | repeated hero cards behaved like rows | `SkillCard` with a skill world, decoration, level, XP, milestone copy, and animated progress |
-| Skill details | skill hero and progress summary | useful information but little distinction between world and analytics | illustrated `skill` hero plus friendly `ProgressCard` |
-| Mission player | intro, scenario, answer, ordering, feedback | answer cards duplicated hard borders/shadows | shared `InteractiveCard` press depth and consistent selected treatment |
-| Completion | illustration, XP, badge notice | content was centered but not coordinated as an achievement sequence | `CompletionHero`, `CelebrationEffect`, `AnimatedXP`, and `BadgeReveal` |
-| Rewards | explorer crest, badges, empty shelf | badge and empty surfaces did not share achievement language | `achievement` surface with medallion depth and focused sparkle |
-| Kids profile | privacy note | same generic flat card as unrelated content | calm `default` supporting card |
-| Parent dashboard | weekly hero, metrics, insight, activity | hero/metrics/insight reused flat, outlined, and elevated surfaces | calm `parent` cards with contextual tint and restrained depth |
-| Parent progress | skill rows | looked like analytics widgets | `ProgressCard` with skill identity and human milestone copy |
-| Child profiles | profile rows, entitlement notice | selected state depended mostly on background color | `parent` surface with avatar hierarchy and selected highlight |
-| Offline activities | activity rows | repeated outlined cards | `parent` surface tinted by the related skill |
-| Forms/settings | grouped sections and rows | many outlined containers carried equal emphasis | calm `parent` grouping; interactive rows remain visibly actionable |
-| Empty/loading/error states | large uncontained state blocks | disconnected from the card family | `default`/`achievement` contained state surface where appropriate |
+| Area                       | Existing card-like UI                          | Main issue                                                            | Design-system direction                                                                      |
+| -------------------------- | ---------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| Kids Home                  | explorer level, today's mission, thought nudge | level and mission shared generic surface language                     | `progress` for level; illustrated `mission` hero; calm supporting nudge                      |
+| Journey                    | skill progress nodes                           | repeated hero cards behaved like rows                                 | `SkillCard` with a skill world, decoration, level, XP, milestone copy, and animated progress |
+| Skill details              | skill hero and progress summary                | useful information but little distinction between world and analytics | illustrated `skill` hero plus friendly `ProgressCard`                                        |
+| Mission player             | intro, scenario, answer, ordering, feedback    | answer cards duplicated hard borders/shadows                          | shared `InteractiveCard` press depth and consistent selected treatment                       |
+| Completion                 | illustration, XP, badge notice                 | content was centered but not coordinated as an achievement sequence   | `CompletionHero`, `CelebrationEffect`, `AnimatedXP`, and `BadgeReveal`                       |
+| Rewards                    | explorer crest, badges, empty shelf            | badge and empty surfaces did not share achievement language           | `achievement` surface with medallion depth and focused sparkle                               |
+| Kids profile               | privacy note                                   | same generic flat card as unrelated content                           | calm `default` supporting card                                                               |
+| Parent dashboard           | weekly hero, metrics, insight, activity        | hero/metrics/insight reused flat, outlined, and elevated surfaces     | calm `parent` cards with contextual tint and restrained depth                                |
+| Parent progress            | skill rows                                     | looked like analytics widgets                                         | `ProgressCard` with skill identity and human milestone copy                                  |
+| Child profiles             | profile rows, entitlement notice               | selected state depended mostly on background color                    | `parent` surface with avatar hierarchy and selected highlight                                |
+| Offline activities         | activity rows                                  | repeated outlined cards                                               | `parent` surface tinted by the related skill                                                 |
+| Forms/settings             | grouped sections and rows                      | many outlined containers carried equal emphasis                       | calm `parent` grouping; interactive rows remain visibly actionable                           |
+| Empty/loading/error states | large uncontained state blocks                 | disconnected from the card family                                     | `default`/`achievement` contained state surface where appropriate                            |
 
 ## Shared system
 

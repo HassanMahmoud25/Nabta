@@ -1,8 +1,8 @@
-# Nash2 Premium Visual Redesign Plan
+# Nabta Premium Visual Redesign Plan
 
 ## Product direction
 
-Nash2 should communicate three ideas at a glance: adventure for the child, progress for the parent, and thoughtful learning underneath both. Kids Mode will use lively skill worlds, tactile controls, illustration-led storytelling, and expressive motion. Parent Mode will share the same brand DNA through calmer color, denser information hierarchy, and restrained motion.
+Nabta should communicate three ideas at a glance: adventure for the child, progress for the parent, and thoughtful learning underneath both. Kids Mode will use lively skill worlds, tactile controls, illustration-led storytelling, and expressive motion. Parent Mode will share the same brand DNA through calmer color, denser information hierarchy, and restrained motion.
 
 This document is the implementation checklist and visual QA record for the redesign. Functional learning, scoring, authentication, storage, privacy, mode switching, and routing behavior remain intact unless a presentation-safe refactor is required.
 
@@ -33,11 +33,11 @@ This document is the implementation checklist and visual QA record for the redes
 
 ### Illustration problems
 
-- There is no illustration registry or dedicated Nash2 visual asset structure.
+- There is no illustration registry or dedicated Nabta visual asset structure.
 - Mission `illustrationKey` values are present in content data but are not rendered as illustrations.
 - No scene art exists for onboarding, mission introductions, mission steps, completion, skill worlds, achievements, or empty states.
 - Current emoji scenes have no controlled aspect ratio, art direction, resolution, theme context, or RTL behavior.
-- Existing `assets/images` are Expo starter assets and do not express the Nash2 brand.
+- Existing `assets/images` are Expo starter assets and do not express the Nabta brand.
 
 ### Motion problems
 

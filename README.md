@@ -1,6 +1,6 @@
-# Nash2
+# Nabta
 
-Nash2 is an Expo/React Native MVP that helps children aged 4–12 practice life skills through short interactive decisions. Parents own the account and private child profiles; Kids Mode contains missions, journeys, XP, and badges, and can only return through a Parent PIN gate.
+Nabta is an Expo/React Native MVP that helps children aged 4–12 practice life skills through short interactive decisions. Parents own the account and private child profiles; Kids Mode contains missions, journeys, XP, and badges, and can only return through a Parent PIN gate.
 
 ## Run locally
 

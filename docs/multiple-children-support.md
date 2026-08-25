@@ -1,4 +1,4 @@
-# Nash2 Multiple Children Support
+# Nabta Multiple Children Support
 
 ## Goal
 

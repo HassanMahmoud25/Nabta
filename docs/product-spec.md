@@ -1,8 +1,8 @@
-# Nash2 MVP Product Specification
+# Nabta MVP Product Specification
 
 ## Product promise
 
-Nash2 helps children aged 4–12 practice real-life judgment through short, curated scenarios, decisions, and offline activities. Parents own the authenticated account and manage private child profiles. Children never create accounts and never enter public or social spaces.
+Nabta helps children aged 4–12 practice real-life judgment through short, curated scenarios, decisions, and offline activities. Parents own the authenticated account and manage private child profiles. Children never create accounts and never enter public or social spaces.
 
 ## MVP audience and modes
 
@@ -52,4 +52,3 @@ The parent is the only authenticated identity. Child records contain a nickname,
 - Auth/session, onboarding draft, selected child, completed progress, and rewards persist appropriately.
 - TypeScript, lint, domain tests, and Expo dependency checks pass.
 - Network, empty, loading, and retry states use understandable language and never expose raw backend errors.
-
